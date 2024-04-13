@@ -1,0 +1,39 @@
+<div class="my-5 px-4">
+    <h2 class="fw-bold text-center">MY RESERVATION</h2>
+    <div class="h-line bg-dark"></div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-9 col-md-12 px-4">
+            {{#each reservation }}
+            <div class="card-r mb-4 border-0 shadow">
+                <div class="row g-0 p-3 align-items-center">
+                    <div class="col-md-5 mb-lg-0 mb-md-0 mb-3">
+                        <img src="{{roomNumber.roomType.image}}" class="img-fluid rounded"
+                            style="width: 300px; height: 200px;">
+                    </div>
+                    <div class="col-md-5 px-lg-3">
+                        <div class="d-flex">
+                            <h5 class="mb-3">Room number: {{roomNumber.roomNumber}}</h5>
+                            <h5 class="mb-3 ms-3">({{roomNumber.roomType.roomName}})</h5>
+                        </div>
+                        <div class="checkIn mb-3">
+                            <h6 class="mb-1">Check-In : {{dateFormat checkIn "DD/MM/YYYY"}}</h6>
+                        </div>
+                        <div class="checkOut mb-3">
+                            <h6 class="mb-1">Check-Out : {{dateFormat checkOut "DD/MM/YYYY"}}</h6>
+                        </div>
+                        <div class="price mb-3">
+                            <h6 class="mb-1">price: {{roomNumber.price}}$</h6>
+                        </div>
+                        <div class="total">
+                            <h6 class="mb-1">Total: {{totalPrice}}$</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

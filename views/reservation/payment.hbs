@@ -1,0 +1,48 @@
+<div class="container-fluid d-flex justify-content-center">
+    <div class="mt-5 w-50">
+        <div class="">
+            <h5 class="fw-bold">PayPal Purchase</h5>
+        </div>
+        <hr />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" class="col-3"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Room Name</td>
+                    <td>{{room.roomNumber}}</td>
+                </tr>
+                <tr>
+                    <td>Room Type</td>
+                    <td>{{room.roomType.roomName}}</td>
+                </tr>
+                <tr>
+                    <td>Check-in</td>
+                    <td>{{dateFormat checkIn "DD/MM/YYYY"}}</td>
+                </tr>
+                <tr>
+                    <td>Check-out</td>
+                    <td>{{dateFormat checkOut "DD/MM/YYYY"}}</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>${{total}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <form action="/reservation/payment" method="post">
+            <input type="hidden" name="roomType" value="{{room.roomType.roomNumber}}">
+            <input type="hidden" name="roomNumber" value="{{room.roomNumber}}">
+            <input type="hidden" name="checkIn" value="{{checkIn}}">
+            <input type="hidden" name="checkOut" value="{{checkOut}}">
+            <input type="hidden" name="total" value="{{total}}">
+            <div class="d-flex justify-content-end">
+                <input type="submit" value="Buy" class="btn btn-primary" style="width: 100px;">
+            </div>
+        </form>
+    </div>
+</div>

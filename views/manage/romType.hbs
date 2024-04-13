@@ -1,0 +1,79 @@
+<main class="content px-3 py-2">
+    <div class="container-fluid">
+        <h1>Manage room type</h1>
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"> CREATE
+                NEW
+                ROOM</button>
+        </div>
+        <table class="table table-light mt-2 text-center">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Room Name</th>
+                    <th>Description</th>
+                    <th>Max People</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            {{#each romType }}
+            <tbody>
+                <tr>
+                    <td>{{id @index}}</td>
+                    <td>{{roomName}}</td>
+                    <td>{{description}}</td>
+                    <td>{{maxPeople}}</td>
+                    <td><img src="{{image}}" alt="" width="200px" height="200px"></td>
+                    <td>
+                        <a class="btn btn-warning" href="/manage/editRomType/{{_id}}">EDIT</a>
+                        <a class="btn btn-danger" href="/manage/romType/delete/{{_id}}"
+                            onclick="return confirm('are you delete')">DELETE</a>
+                    </td>
+                </tr>
+            </tbody>
+            {{/each}}
+        </table>
+
+        <!-- Modal -->
+        <form action="/manage/romType" method="post">
+            <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Create New Room</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Form to input room details -->
+                            <div class="mb-3">
+                                <label for="roomName" class="form-label">Room Name</label>
+                                <input name="roomName" type="text" class="form-control" id="roomName"
+                                    placeholder="Enter room name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <input name="description" type="text" class="form-control" id="description"
+                                    placeholder="Enter description">
+                            </div>
+                            <div class="mb-3">
+                                <label for="maxPeople" class="form-label">Max People</label>
+                                <input name="maxPeople" type="number" class="form-control" id="maxPeople"
+                                    placeholder="Enter max number of people">
+                            </div>
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Image</label>
+                                <input name="image" type="text" class="form-control" id="image"
+                                    placeholder="Enter image">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" value="Create new room"></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>

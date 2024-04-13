@@ -1,0 +1,88 @@
+<main class="content px-3 py-2">
+    <div class="container-fluid">
+        <h1>Manage room</h1>
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"> CREATE
+                NEW ROOM</button>
+        </div>
+        <table class="table table-light mt-2 text-center">
+            <thead>
+                <tr>
+                    <th>Room number</th>
+                    <th>Room type</th>
+                    <th>Status</th>
+                    <th>Price</th>
+                    <th>Utilities</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            {{#each rooms }}
+            <tbody>
+                <tr>
+                    <td>{{ roomNumber }}</td>
+                    <td>{{ roomType.roomName}}</td>
+                    <td>{{ status }}</td>
+                    <td>{{ price }}$</td>
+                    <td>{{ utilities }}</td>
+                    <td>
+                        <a class="btn btn-warning" href="/manage/editRoom/{{_id}}">EDIT</a>
+                        <a class="btn btn-danger" href="/manage/rooms/delete/{{_id}}"
+                            onclick="return confirm('are you delete')">DELETE</a>
+                    </td>
+                </tr>
+            </tbody>
+            {{/each}}
+        </table>
+
+        <!-- Modal -->
+        <form action="/manage/rooms" method="post">
+            <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Create New Room</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {{#if error}}
+                            <div class="alert alert-warning alert-dismissible fade show mt-2 text-center" role="alert">
+                                <strong>{{error}}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                            {{/if}}
+                            <!-- Form to input room details -->
+                            <div class="mb-3">
+                                <label for="roomNumber" class="form-label">Room number</label>
+                                <input name="roomNumber" type="text" class="form-control" id="roomNumber"
+                                    placeholder="Enter room number">
+                            </div>
+                            <div class="mb-3">
+                                <label for="roomType" class="form-label">List room type</label>
+                                <select name="roomType" id='dropdown1' class='form-select'>
+                                    {{#each romType }}
+                                    <option value="{{_id}}">{{ roomName }}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Price</label>
+                                <input name="price" type="text" class="form-control" id="price"
+                                    placeholder="Enter price">
+                            </div>
+                            <div class="mb-3">
+                                <label for="utilities" class="form-label">Utilities</label>
+                                <input name="utilities" type="text" class="form-control" id="utilities"
+                                    placeholder="Enter utilities">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" value="Create new room"></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>

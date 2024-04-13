@@ -1,0 +1,31 @@
+<main class="content px-3 py-2">
+    <div class="container-fluid bg-light border border-1">
+        <h1>Update room type</h1>
+        <form action="/manage/editRomType" method="post">
+            <div class="modal-body">
+                <input type="hidden" name="id" value="{{room._id}}">
+                <div class="mb-3">
+                    <label for="roomName" class="form-label">Room Name</label>
+                    <input name="roomName" type="text" class="form-control" id="roomName" value="{{room.roomName}}">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <input name="description" type="text" class="form-control" id="description"
+                        value="{{room.description}}">
+                </div>
+                <div class="mb-3">
+                    <label for="maxPeople" class="form-label">Max People</label>
+                    <input name="maxPeople" type="number" class="form-control" id="maxPeople"
+                        value="{{room.maxPeople}}">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input name="image" type="text" class="form-control" id="image" value="{{room.image}}">
+                </div>
+            </div>
+            <div class="modal-footer mb-2">
+                <input type="submit" class="btn btn-warning" value="Update room"></input>
+            </div>
+        </form>
+    </div>
+</main>

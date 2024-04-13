@@ -1,0 +1,42 @@
+<div class="my-5 px-4">
+    <h2 class="fw-bold text-center">CONTACT US</h2>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 mb-5 px-4">
+            <div class="bg-light rounded shadow p-4">
+                <iframe class="w-100 rounded mb-4" height="320px"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59615.84403444611!2d105.71112834240911!3d20.9529066032221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3134532bef4bcdb7%3A0xbcc7a679fcba07f6!2zSMOgIMSQw7RuZywgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1710767789105!5m2!1svi!2s"
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <h5>Address</h5>
+                <a class="d-inline-block text-decoration-none text-dark mb-2"
+                    href="https://maps.app.goo.gl/2h8gYBpY8Q8zJjih7">
+                    <i class="bi bi-geo-alt-fill me-1"></i>Hà Đông, Hà Nội
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 px-4">
+            <div class="bg-light rounded shadow p-4">
+                <form action="/contact" method="post">
+                    <h5>Send a message</h5>
+                    <div class="mt-3">
+                        <label class="form-lable" style="font-weight: 500;">Name</label>
+                        <input type="text" class="form-control shadow-none" name="username" value={{user.username}}>
+                    </div>
+                    <div class="mt-3">
+                        <label class="form-lable" style="font-weight: 500;">Email address</label>
+                        <input type="email" class="form-control shadow-none" name="email" value="{{user.email}}">
+                    </div>
+                    <div class="mt-3">
+                        <label class="form-lable" style="font-weight: 500;">Message</label>
+                        <textarea class="form-control shadow-none" rows="5" style="resize: none;"
+                            name="message"> </textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary text-white mt-3">SEND</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

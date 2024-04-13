@@ -1,0 +1,65 @@
+<div class="my-5 px-4">
+    <h2 class="fw-bold text-center">OUR ROOMS</h2>
+    <div class="h-line bg-dark"></div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-12 mb-lg-0 mb-4 px-lg-0">
+            <nav class="navbar navbar-expand-lg bg-white rounded shadow">
+                <div class="container-fluid flex-lg-column align-items-stretch">
+                    <h4 class="mt-2">SEARCH</h4>
+                    <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#filterDropdown" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse flex-column align-items-stretch mt-2" id="filterDropdown">
+                        <div class="border bg-light p-3 rounded mb-3">
+                            <form action="/room" method="GET">
+                                <div class="mb-3">
+                                    <label for="roomTypeFilter" class="form-label">Select room type:</label>
+                                    <select name="roomTypeFilter" class="form-select">
+                                        <option value="">-- All --</option>
+                                        {{#each roomType}}
+                                        <option value="{{_id}}">{{roomName}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Filter</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="col-lg-9 col-md-12 px-4">
+            {{#each room }}
+            <div class="card-r mb-4 border-0 shadow">
+                <div class="row g-0 p-3 align-items-center">
+                    <div class="col-md-5 mb-lg-0 mb-md-0 mb-3">
+                        <img src="{{roomType.image}}" class="img-fluid rounded" style="width: 300px; height: 200px;">
+                    </div>
+                    <div class="col-md-5 px-lg-3">
+                        <h5 class="mb-3">Room number: {{roomNumber}}</h5>
+                        <div class="features mb-3">
+                            <h6 class="mb-1">Features</h6>
+                            <span class="bagde rounded-pill bg-light text-dark text-wrap">{{utilities}}</span>
+                        </div>
+                        <div class="guest">
+                            <h6 class="mb-1">Guests</h6>
+                            <span class="bagde rounded-pill bg-light text-dark text-wrap">{{roomType.maxPeople}}
+                                Adults</span>
+                        </div>
+                    </div>
+                    <div class="col-md-2 mt-lg-0 mt-md-0 mt-4 text-center">
+                        <h6 class="mb-4">{{price}}$ night</h6>
+                        <a href="/reservation/confirmation/{{_id}}"
+                            class="btn btn-sm w-100 btn-primary text-white shadow-none">Choose room</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

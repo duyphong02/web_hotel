@@ -1,0 +1,39 @@
+<main class="content px-3 py-2">
+    <h2>Update Reservation</h2>
+    <div class="container-fluid bg-light border border-1">
+        {{#if error}}
+        <div class="alert alert-warning alert-dismissible fade show mt-2 text-center" role="alert">
+            <strong>{{error}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {{/if}}
+        <form action="/manage/updateReservation/{{reservation._id}}" method="post">
+            <div class="modal-body">
+                <input type="hidden" name="id" value="{{reservation._id}}">
+                <div class="mb-3">
+                    <label for="roomNumber" class="form-label">Room Number</label>
+                    <input name="roomNumber" type="text" class="form-control" id="roomNumber"
+                        value="{{room.roomNumber}}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="user" class="form-label">Username</label>
+                    <input name="user" type="text" class="form-control" id="user" value="{{user.username}}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status reservation</label>
+                    <select name="status" id='dropdown1' class='form-select'>
+                        <option>Choose status</option>
+                        <option value="using" {{#if (eq room.status 'using' )}}selected{{/if}}>
+                            Using
+                        </option>
+                        <option value="cancel" {{#if (eq room.status 'cancel' )}}selected{{/if}}>
+                            Cancel
+                        </option>
+                    </select>
+                </div>
+                <div class="modal-footer mb-2">
+                    <input type="submit" class="btn btn-warning" value="Update room"></input>
+                </div>
+        </form>
+    </div>
+</main>

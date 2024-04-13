@@ -1,0 +1,38 @@
+<main class="content px-3 py-2">
+    <div class="container-fluid">
+        <h1>Manage reservations</h1>
+        <table class="table table-light mt-2 text-center">
+            <thead>
+                <tr>
+                    <th>Room number</th>
+                    <th>Email</th>
+                    <th>Check-in</th>
+                    <th>Check-out</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            {{#each reservation }}
+            <tbody>
+                <tr>
+                    <td>{{roomNumber.roomNumber}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{dateFormat checkIn "DD/MM/YYYY"}}</td>
+                    <td>{{dateFormat checkOut "DD/MM/YYYY"}}</td>
+                    <td>{{totalPrice}}</td>
+                    <td>
+                        <span
+                            style="{{#if (eq status 'pending')}}color: yellow;{{/if}}{{#if (eq status 'using')}}color: blue;{{/if}}{{#if (eq status 'cancel')}}color: red;{{/if}}">
+                            {{status}}
+                        </span>
+                    </td>
+                    <td>
+                        <a href="/manage/updateReservation/{{_id}}" class="btn btn-danger">Update Status</a>
+                    </td>
+                </tr>
+            </tbody>
+            {{/each}}
+        </table>
+    </div>
+</main>

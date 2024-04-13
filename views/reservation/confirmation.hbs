@@ -1,0 +1,41 @@
+<div class="container">
+    {{#if error}}
+    <div class="d-flex justify-content-center">
+        <div class="alert alert-warning alert-dismissible fade show w-50 mt-2 text-center" role="alert">
+            <strong>{{error}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    {{/if}}
+    <div class="row">
+        <div class="col-12 my-5 mb-4 px-4">
+            <h2 class="fw-bold">CONFIRM BOOKING</h2>
+        </div>
+        <div class="col-lg-7 col-md-12 px-4">
+            <div class="cards p-4 shadow-sm rounded" style="width: 650px;">
+                <img src="{{room.roomType.image}}" alt="Image" class="img-fluid rounded" style="height: 400px;">
+                <h5 class="mt-2">Room number: {{room.roomNumber}}</h5>
+                <h6>Price: {{room.price}}</h6>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-12 px-4">
+            <div class="card mb-4 border-0 shadow-sm rounded-3" style="width: 550px;">
+                <div class="card-body">
+                    <form id="bookingForm" action="/reservation/confirmation/{{room._id}}" method="post">
+                        <h4 class="mb-3">BOOKING DETAILS</h4>
+                        <input type="hidden" name="roomId" value="{{room._id}}">
+                        <div class="row">
+                            <div class="col-md-6 mb-3 bg-light w-100">
+                                <label class="form-label fw-bold">Check-in</label>
+                                <input type="date" class="form-control shadow-none mb-3" name="checkIn" id="checkIn">
+                                <label class="form-label fw-bold">Check-out</label>
+                                <input type="date" class="form-control shadow-none" name="checkOut" id="checkOut">
+                            </div>
+                            <input type="submit" class="btn w-100 btn-success mt-2" value="Pay now"></input>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
